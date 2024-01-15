@@ -65,13 +65,31 @@ echo "Число 5 зустрічається у масиві " . $numberOfFives
 
 // 5. Виведіть на екран тільки числа, які націло діляться на 3.
 
-$result = '';
+//$result = '';
+//
+//foreach ($array as $number) {
+//        $result .= ($number % 3 === 0) ? $number . ' ' : '';
+//}
+//
+//echo ($result != '') ?  $result . '- ділиться на 3 націло ' . PHP_EOL : 'Немає чисел, які націло діляться на 3 ' . PHP_EOL;
 
+// варіант з массивом
+
+$hasNumbersDivisibleBy3 = false;
+$NumbersDivisibleBy3 = [];
+
+// Додаємо числа, які націло діляться на 3, до нового масиву
 foreach ($array as $number) {
-    if ($number % 3 === 0) {
-        $result .= ($number % 3 === 0) ? $number . ' ' : '';
+    if ($number % 3 == 0) {
+        $NumbersDivisibleBy3[] = $number;
+        $hasNumbersDivisibleBy3 = true;
     }
 }
 
-echo ($result != '') ?  $result . '- ділиться на 3 націло ' . PHP_EOL : 'Немає чисел, які націло діляться на 3 ' . PHP_EOL;
-
+// Виводимо новий масив або повідомлення, якщо немає чисел
+if ($hasNumbersDivisibleBy3) {
+    echo "Числа які діляться на 3 без залишку: ";
+    print_r($NumbersDivisibleBy3);
+} else {
+    echo "Немає чисел, які націло діляться на 3";
+}
